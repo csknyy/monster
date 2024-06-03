@@ -1,6 +1,7 @@
 import streamlit as st
 import chess
 import chess.svg
+from PIL import Image
 from io import BytesIO
 import base64
 
@@ -16,9 +17,6 @@ def main():
     # Initialize chess board
     board = chess.Board()
     
-    # Counter for generating unique IDs
-    widget_counter = 0
-
     # Game loop
     while not board.is_game_over():
         st.subheader("Current Board")
@@ -30,13 +28,8 @@ def main():
         else:
             st.write("Black's turn")
 
-        # Generate unique IDs for text input and buttons
-        widget_counter += 1
-        move_id = f"move_input_{widget_counter}"
-        button_id = f"button_{widget_counter}"
-
-        move = st.text_input("Enter your move (e.g., e2e4):", key=move_id)
-        if st.button("Make move", key=button_id):
+        move = st.text_input("Enter your move (e.g., e2e4):")
+        if st.button("Make move"):
             try:
                 board.push_san(move)
             except ValueError:
@@ -51,9 +44,6 @@ def main():
         elif board.is_insufficient_material():
             st.write("Draw due to insufficient material!")
             break
-
-        # Update the board state
-        board = board.copy()
 
 if __name__ == "__main__":
     main()
