@@ -52,5 +52,8 @@ def main():
             st.write("Draw due to insufficient material!")
             break
 
+        # Update the board state
+        board = board.copy()
+
 if __name__ == "__main__":
     main()
