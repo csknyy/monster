@@ -1,6 +1,6 @@
 import streamlit as st
 import chess
-import chess.svg
+import chess.svg 
 from PIL import Image
 from io import BytesIO
 import base64
