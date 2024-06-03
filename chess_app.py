@@ -30,12 +30,13 @@ def main():
         else:
             st.write("Black's turn")
 
-        # Generate unique ID for text input
+        # Generate unique IDs for text input and buttons
         widget_counter += 1
         move_id = f"move_input_{widget_counter}"
+        button_id = f"button_{widget_counter}"
 
         move = st.text_input("Enter your move (e.g., e2e4):", key=move_id)
-        if st.button("Make move"):
+        if st.button("Make move", key=button_id):
             try:
                 board.push_san(move)
             except ValueError:
