@@ -3,7 +3,7 @@ import streamlit as st
 from github import Github
 
 # Load GitHub access token from environment variable
-token = os.getenv("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")
+token = os.environ["GITHUB_TOKEN"] = "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"
 if not token:
     st.error("GitHub token not found. Please set the 'GITHUB_TOKEN' environment variable.")
     st.stop()
