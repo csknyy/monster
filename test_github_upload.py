@@ -4,7 +4,7 @@ from github import Github
 import os
 
 g = Github(API_token)
-repo = g.get_repo("csknyy")
+repo = g.get_repo("csknyy/monster")
 issues = repo.get_issues(state="open")
 
 st.write(issues)
