@@ -12,6 +12,7 @@
 
 import base64
 import requests
+import streamlit as st
 
 user = 'csknyy'
 repo_name = 'monster'
