@@ -29,3 +29,7 @@ if req.status_code == requests.codes.ok:
     st.write(jsonString)
 else:
     st.write('Content was not found.')
+
+input_text = st.text_input("Enter the path of the file on GitHub")
+
+st.write(jsonString + '\n' + input_text)
