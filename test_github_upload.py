@@ -13,7 +13,7 @@ path_to_file = 'update_this.csv'
 g = Github(token)
 
 
-repo = g.get_repo(f'{user}/{repo_name}')
+repo = g.get_repo(f"{user}/{repo_name}")
 
 # Display a text input box and a button in the Streamlit app
 st.title("GitHub File Updater")
