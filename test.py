@@ -17,7 +17,7 @@ import streamlit as st
 user = 'csknyy'
 repo_name = 'monster'
 path_fo_file = 'update_this.txt'
-url = 'https://api.github.com/repos/{user}/{repo_name}/contents/{path_to_file}'
+url = f'https://api.github.com/repos/{user}/{repo_name}/contents/{path_to_file}'
 req = requests.get(url)
 if req.status_code == requests.codes.ok:
     req = req.json()  # the response is a JSON
