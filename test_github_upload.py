@@ -1,9 +1,9 @@
+from github import Github
+import os
+
 API_token = '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'
 username = 'csknyy@hotmail.com'
 password = 'At@han2014'
-
-from github import Github
-import os
 
 #g = Github(username, password)
 g = Github(API_token)
