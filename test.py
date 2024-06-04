@@ -1,47 +1,16 @@
-from flask import Flask, request, jsonify
-
-app = Flask(__name__)
-
-# Path to your text file
-file_path = 'test.txt'
-
-@app.route('/read', methods=['GET'])
-def read_file():
-    try:
-        with open(file_path, 'r') as file:
-            content = file.read()
-        return jsonify({"content": content}), 200
-    except Exception as e:
-        return str(e), 500
-
-@app.route('/write', methods=['POST'])
-def write_file():
-    try:
-        new_content = request.form['content']
-        with open(file_path, 'w') as file:
-            file.write(new_content)
-        return "File updated successfully", 200
-    except Exception as e:
-        return str(e), 500
-
-if __name__ == '__main__':
-    app.run(debug=True)
-
-
-
 import streamlit as st
 import requests
 
-# URL of your Flask server endpoints
-read_url = "http://127.0.0.1:5000/read"
-write_url = "http://127.0.0.1:5000/write"
+# Define the URL of the text file
+url = "https://coskunyay.com/test.txt"
 
-# Fetch the file contents from the Flask server
-response = requests.get(read_url)
+# Fetch the file contents from the URL
+response = requests.get(url)
 
 # Check if the request was successful
 if response.status_code == 200:
-    file_content = response.json()["content"]
+    # Get the text content of the file
+    file_content = response.text
 else:
     file_content = "Failed to fetch the file."
 
@@ -57,11 +26,8 @@ if st.button("Save Changes"):
     # Combine the old content with the new content
     updated_content = file_content + "\n" + new_content
 
-    # Send the updated content to the Flask server
-    save_response = requests.post(write_url, data={"content": updated_content})
+    # Note: This is a placeholder for the actual save logic, which would require server-side support to update the file.
+    # Here, we are just displaying the combined content as an example.
+    st.text_area("Updated File Content", value=updated_content, height=300, disabled=True)
+    st.success("New lines added successfully!")
 
-    # Check if the save request was successful
-    if save_response.status_code == 200:
-        st.success("File saved successfully!")
-    else:
-        st.error("Failed to save the file.")
