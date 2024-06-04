@@ -14,26 +14,17 @@ if response.status_code == 200:
 else:
     file_content = "Failed to fetch the file."
 
-# Display the content in Streamlit
-st.title("Text File Content")
-st.text_area("Current File Content", value=file_content, height=300, disabled=True)
+# Display the content in Streamlit and provide an editable text area
+st.title("Edit Text File Content")
+edited_content = st.text_area("File Content", value=file_content, height=300)
 
-# Add a text area for adding new content
-new_content = st.text_area("Add New Lines")
-
-# Add a button to save the new content
+# Add a button to save the edited content
 if st.button("Save Changes"):
-    # Combine the old content with the new content
-    updated_content = file_content + "\n" + new_content
-
-    # Note: This is a placeholder for the actual save logic, which would require server-side support to update the file.
-    # Here, we are just displaying the combined content as an example.
-    st.text_area("Updated File Content", value=updated_content, height=300, disabled=True)
-    st.success("New lines added successfully!")
-    response = requests.post(url, data={"content": new_content})
-
-    # Check if the update request was successful
-    if response.status_code == 200:
-        st.success("File updated successfully!")
+    # Send the edited content back to the server
+    save_response = requests.post(url, data=edited_content)
+    
+    # Check if the save request was successful
+    if save_response.status_code == 200:
+        st.success("File saved successfully!")
     else:
-        st.error("Failed to update the file.")
+        st.error("Failed to save the file.")
