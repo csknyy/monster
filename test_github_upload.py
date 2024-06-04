@@ -3,10 +3,10 @@ from github import Github
 g = Github('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')
 
 username = 'csknyy'
-repo-name = 'monster'
+repo_name = 'monster'
 path_to_file = 'update_this.csv'
 
-repo = g.get_repo(f'{username}/{repo-name}')
+repo = g.get_repo(f'{username}/{repo_name}')
 
 input_text = st.text_input("Enter input")
 
