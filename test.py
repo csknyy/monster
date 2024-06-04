@@ -16,7 +16,7 @@ import streamlit as st
 
 user = 'csknyy'
 repo_name = 'monster'
-path_to_file = 'update_this.txt'
+path_to_file = 'update_this.csv'
 url = f'https://api.github.com/repos/{user}/{repo_name}/contents/{path_to_file}'
 req = requests.get(url)
 if req.status_code == requests.codes.ok:
@@ -35,3 +35,12 @@ input_text = st.text_input("Enter input")
 st.markdown('---')
 
 st.write(jsonString + '\n' + input_text)
+
+from github import Github
+
+g = Github('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')
+
+repo = g.get_repo(f'{user}/{repo_name}')
+
+repo.create_file(path_to_file, 'upload csv', data, branch='main')
+
