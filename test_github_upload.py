@@ -3,8 +3,7 @@ API_token = 'github_pat_11ANEUTIY0idbmJtwq345b_LXP3vjIkQ2miJjhHmO2Gclfd1XAXUgUu6
 from github import Github
 import os
 
-token = os.getenv('GITHUB_TOKEN', API_token)
-g = Github(token)
+g = Github(API_token)
 repo = g.get_repo("csknyy/monster")
 issues = repo.get_issues(state="open")
 
