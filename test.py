@@ -8,4 +8,4 @@ from github import Github
 import requests
 url = 'https://github.com/csknyy/monster/blob/b0555c860210870ef7eff781899f6194fc1b4fec/update_this.txt'
 page = requests.get(url)
-st.write(page)
+st.write(page.text)
