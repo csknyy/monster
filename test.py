@@ -31,3 +31,19 @@ if st.button("Save Changes"):
     st.text_area("Updated File Content", value=updated_content, height=300, disabled=True)
     st.success("New lines added successfully!")
 
+# Define the URL of the Flask server endpoint
+update_url = "https://coskunyay.com/test.txt"  # Change to your server URL
+
+# Add a text area for adding new content
+new_content = st.text_area("Add New Lines")
+
+# Add a button to save the new content
+if st.button("Save Changes"):
+    # Send the updated content to the Flask server
+    response = requests.post(update_url, data={"content": new_content})
+
+    # Check if the update request was successful
+    if response.status_code == 200:
+        st.success("File updated successfully!")
+    else:
+        st.error("Failed to update the file.")
