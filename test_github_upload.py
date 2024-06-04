@@ -1,11 +1,12 @@
-API_token = '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'
+API_token = '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'
 username = 'csknyy@hotmail.com'
 password = 'At@han2014'
 
 from github import Github
 import os
 
-g = Github(username, password)
+#g = Github(username, password)
+g = Github(API_token)
 repo = g.get_repo("csknyy/monster", lazy=False)
 #issues = repo.get_issues(state="open")
 
