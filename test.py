@@ -32,4 +32,6 @@ else:
 
 input_text = st.text_input("Enter input")
 
+st.markdown('---')
+
 st.write(jsonString + '\n' + input_text)
