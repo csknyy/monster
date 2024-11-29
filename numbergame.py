@@ -10,16 +10,17 @@ min_value = st.sidebar.number_input("Minimum Value", value=1, step=1)
 max_value = st.sidebar.number_input("Maximum Value", value=100, step=1)
 lives = st.sidebar.number_input("Number of Lives", value=5, min_value=1, step=1)
 
-# Start the game
+# Initialize session state variables
+if "secret_number" not in st.session_state:
+    st.session_state.secret_number = random.randint(min_value, max_value)
+    st.session_state.attempts = 0
+    st.session_state.lives = lives
+    st.session_state.game_over = False
+
+# Ensure the minimum value is less than the maximum value
 if min_value >= max_value:
     st.error("Minimum value must be less than the maximum value!")
 else:
-    if "secret_number" not in st.session_state:
-        st.session_state.secret_number = random.randint(min_value, max_value)
-        st.session_state.attempts = 0
-        st.session_state.lives = lives
-        st.session_state.game_over = False
-
     st.write(f"Guess the number between {min_value} and {max_value}!")
     st.write(f"Lives remaining: {st.session_state.lives}")
 
