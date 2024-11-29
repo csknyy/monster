@@ -9,7 +9,7 @@ st.header("Set the Range")
 min_value, max_value = st.slider(
     "Select the range for the game:",
     min_value=1,
-    max_value=500,
+    max_value=1000,
     value=(1, 100),
     step=1
 )
