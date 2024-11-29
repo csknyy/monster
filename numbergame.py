@@ -14,8 +14,8 @@ min_value, max_value = st.slider(
     step=1
 )
 
-# Input for setting lives
-lives = st.number_input("Number of Lives", value=5, min_value=1, step=1)
+# Slider for setting lives
+lives = st.slider("Select the number of lives:", min_value=1, max_value=10, value=5, step=1)
 
 # Initialize session state variables
 if "secret_number" not in st.session_state:
