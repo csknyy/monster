@@ -4,12 +4,15 @@ import streamlit as st
 # Set up the Streamlit app
 st.title("Number Guessing Game 🎯")
 
+# Add a GIF or image from a URL
+st.image("https://media.giphy.com/media/l0HlHJGHe4BGjJrSo/giphy.gif", caption="Guess the Number Game!", use_column_width=True)
+
 # Range slider for setting the minimum and maximum values
 st.header("Set the Range")
 min_value, max_value = st.slider(
     "Select the range for the game:",
     min_value=1,
-    max_value=1000,
+    max_value=500,
     value=(1, 100),
     step=1
 )
@@ -32,8 +35,10 @@ st.write(f"Lives remaining: {st.session_state.lives}")
 if st.session_state.game_over:
     if st.session_state.lives == 0:
         st.error(f"Game Over! You've run out of lives. The number was {st.session_state.secret_number}. 😢")
+        st.image("https://media.giphy.com/media/3o7aD4WOlffBBQQtdG/giphy.gif", caption="Better Luck Next Time!", use_column_width=True)
     else:
         st.success(f"Congratulations! You guessed the number: {st.session_state.secret_number} 🎉")
+        st.image("https://media.giphy.com/media/111ebonMs90YLu/giphy.gif", caption="You Won!", use_column_width=True)
 
     if st.button("Play Again"):
         st.session_state.secret_number = random.randint(min_value, max_value)
