@@ -2,7 +2,7 @@ import random
 import streamlit as st
 
 # Set up the Streamlit app
-st.title("Number Guessing Game 🎯")
+st.title("Guess me 🎯")
 
 # Add a GIF or image from a URL
 st.image("https://media.giphy.com/media/l0HlHJGHe4BGjJrSo/giphy.gif", caption="Guess the Number Game!", use_column_width=True)
