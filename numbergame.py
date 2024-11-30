@@ -1,8 +1,20 @@
 import random
 import streamlit as st
 
+# Custom CSS to hide the GitHub icon
+hide_github_icon = """
+<style>
+#GithubIcon {
+  visibility: hidden;
+}
+</style>
+"""
+
+# Apply the CSS
+st.markdown(hide_github_icon, unsafe_allow_html=True)
+
 # Set up the Streamlit app
-st.title("Guess me 🎯")
+st.title("Number Guessing Game 🎯")
 
 # Add a GIF or image from a URL
 st.image("https://media.giphy.com/media/l0HlHJGHe4BGjJrSo/giphy.gif", caption="Guess the Number Game!", use_column_width=True)
